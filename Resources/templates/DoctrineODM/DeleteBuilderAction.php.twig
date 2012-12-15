@@ -2,6 +2,8 @@
 {% block process -%}
     protected function getObject($pk)
     {
+        $pk = is_numeric($pk) ? intval($pk) : $pk;
+
         ${{ builder.ModelClass }} = $this->getDocumentManager()
              ->getRepository('{{ model }}')
              ->find($pk);
